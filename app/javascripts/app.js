@@ -71,9 +71,19 @@ function splitSend() {
   var amount = document.getElementById("amount").value;
   var receiverAAddress = document.getElementById("receiverAAddress").value;
   var receiverBAddress = document.getElementById("receiverBAddress").value;
-  
-  // TODO - call fc.splitSend with right arguments 
+
+  // Why does this not work ?
+  // Why do I need this call using sendTransaction
   // fc.splitSend(amount, receiverAAddress, receiverBAddress)
+    
+  // Call fc.splitSend with right arguments 
+  fc.splitSend.sendTransaction(receiverAAddress, receiverBAddress, {from: account,  value: amount, gas: 350000}).then(function(tx) {
+        console.log('Transaction --> ' + tx);
+        }).catch(function(e) {
+      console.log(e);
+    });
+
+    
   refreshBalance();
 };
 

@@ -366,28 +366,6 @@ var SolidityEvent = require("web3/lib/web3/event.js");
         "constant": false,
         "inputs": [
           {
-            "name": "guest",
-            "type": "address"
-          }
-        ],
-        "name": "getBalanceGuest",
-        "outputs": [
-          {
-            "name": "",
-            "type": "uint256"
-          }
-        ],
-        "payable": false,
-        "type": "function"
-      },
-      {
-        "constant": false,
-        "inputs": [
-          {
-            "name": "amount",
-            "type": "uint256"
-          },
-          {
             "name": "receiverA",
             "type": "address"
           },
@@ -407,6 +385,24 @@ var SolidityEvent = require("web3/lib/web3/event.js");
         "type": "function"
       },
       {
+        "constant": false,
+        "inputs": [
+          {
+            "name": "guest",
+            "type": "address"
+          }
+        ],
+        "name": "getBalanceGuest",
+        "outputs": [
+          {
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "payable": false,
+        "type": "function"
+      },
+      {
         "inputs": [],
         "type": "constructor"
       },
@@ -414,17 +410,17 @@ var SolidityEvent = require("web3/lib/web3/event.js");
         "anonymous": false,
         "inputs": [
           {
-            "indexed": true,
-            "name": "from",
+            "indexed": false,
+            "name": "owner",
             "type": "address"
           },
           {
-            "indexed": true,
+            "indexed": false,
             "name": "receiverA",
             "type": "address"
           },
           {
-            "indexed": true,
+            "indexed": false,
             "name": "receiverB",
             "type": "address"
           },
@@ -438,23 +434,23 @@ var SolidityEvent = require("web3/lib/web3/event.js");
         "type": "event"
       }
     ],
-    "unlinked_binary": "0x6060604052600080546c0100000000000000000000000033810204600160a060020a0319909116179055610187806100376000396000f3606060405260e060020a600035046308b6ff5681146100345780638ad5d3d3146100595780638f35002e1461007b575b610002565b3461000257600054600160a060020a0316315b60408051918252519081900360200190f35b34610002576100476004356000600160a060020a03821615156100c857610002565b6100b4600435602435604435600060028404600160a060020a03841615806100aa5750600160a060020a038316155b156100d657610002565b604080519115158252519081900360200190f35b50600160a060020a03163190565b604051600160a060020a0385169082156108fc029083906000818181858888f1935050505015806101295750604051600160a060020a0384169082156108fc029083906000818181858888f19350505050155b1561013357610002565b600054604080518381529051600160a060020a0380871693888216939116917fdda01c5ce42b56fd4092789dc90e87345fae8dfc1d2ac6e8ba068e68138cfe799181900360200190a450600194935050505056",
+    "unlinked_binary": "0x6060604052600080546c0100000000000000000000000033810204600160a060020a031990911617905561018f806100376000396000f3606060405260e060020a600035046308b6ff5681146100345780631d246114146100595780638ad5d3d31461008f575b610002565b3461000257600054600160a060020a0316315b60408051918252519081900360200190f35b6100b1600435602435600060023404600160a060020a03841615806100855750600160a060020a038316155b156100c557610002565b34610002576100476004356000600160a060020a038216151561018157610002565b604080519115158252519081900360200190f35b604051600160a060020a0385169082156108fc029083906000818181858888f1935050505015806101185750604051600160a060020a0384169082156108fc029083906000818181858888f19350505050155b1561012257610002565b60005460408051600160a060020a03928316815286831660208201529185168282015260608201839052517fdda01c5ce42b56fd4092789dc90e87345fae8dfc1d2ac6e8ba068e68138cfe799181900360800190a15060019392505050565b50600160a060020a0316319056",
     "events": {
       "0xdda01c5ce42b56fd4092789dc90e87345fae8dfc1d2ac6e8ba068e68138cfe79": {
         "anonymous": false,
         "inputs": [
           {
-            "indexed": true,
-            "name": "from",
+            "indexed": false,
+            "name": "owner",
             "type": "address"
           },
           {
-            "indexed": true,
+            "indexed": false,
             "name": "receiverA",
             "type": "address"
           },
           {
-            "indexed": true,
+            "indexed": false,
             "name": "receiverB",
             "type": "address"
           },
@@ -468,9 +464,9 @@ var SolidityEvent = require("web3/lib/web3/event.js");
         "type": "event"
       }
     },
-    "updated_at": 1480169246310,
+    "updated_at": 1480229313822,
     "links": {},
-    "address": "0x1473cc22046ed83bffcc4712a9d24c6e63c62326"
+    "address": "0x1877635afbfa8d3e18c6f99ef1ca9df6519350ad"
   }
 };
 

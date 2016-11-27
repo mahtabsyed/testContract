@@ -5690,6 +5690,28 @@ var SolidityEvent = require("web3/lib/web3/event.js");
         "constant": false,
         "inputs": [
           {
+            "name": "receiverA",
+            "type": "address"
+          },
+          {
+            "name": "receiverB",
+            "type": "address"
+          }
+        ],
+        "name": "splitSend",
+        "outputs": [
+          {
+            "name": "",
+            "type": "bool"
+          }
+        ],
+        "payable": true,
+        "type": "function"
+      },
+      {
+        "constant": false,
+        "inputs": [
+          {
             "name": "guest",
             "type": "address"
           }
@@ -5707,13 +5729,68 @@ var SolidityEvent = require("web3/lib/web3/event.js");
       {
         "inputs": [],
         "type": "constructor"
+      },
+      {
+        "anonymous": false,
+        "inputs": [
+          {
+            "indexed": false,
+            "name": "owner",
+            "type": "address"
+          },
+          {
+            "indexed": false,
+            "name": "receiverA",
+            "type": "address"
+          },
+          {
+            "indexed": false,
+            "name": "receiverB",
+            "type": "address"
+          },
+          {
+            "indexed": false,
+            "name": "splitAmount",
+            "type": "uint256"
+          }
+        ],
+        "name": "LogSplitSend",
+        "type": "event"
       }
     ],
-    "unlinked_binary": "0x6060604052600080546c0100000000000000000000000033810204600160a060020a031990911617905560768060356000396000f3606060405260e060020a600035046308b6ff56811460265780638ad5d3d314604a575b6002565b34600257600054600160a060020a0316315b60408051918252519081900360200190f35b3460025760386004356000600160a060020a03821615156068576002565b50600160a060020a0316319056",
-    "events": {},
-    "updated_at": 1480148714864,
+    "unlinked_binary": "0x6060604052600080546c0100000000000000000000000033810204600160a060020a031990911617905561018f806100376000396000f3606060405260e060020a600035046308b6ff5681146100345780631d246114146100595780638ad5d3d31461008f575b610002565b3461000257600054600160a060020a0316315b60408051918252519081900360200190f35b6100b1600435602435600060023404600160a060020a03841615806100855750600160a060020a038316155b156100c557610002565b34610002576100476004356000600160a060020a038216151561018157610002565b604080519115158252519081900360200190f35b604051600160a060020a0385169082156108fc029083906000818181858888f1935050505015806101185750604051600160a060020a0384169082156108fc029083906000818181858888f19350505050155b1561012257610002565b60005460408051600160a060020a03928316815286831660208201529185168282015260608201839052517fdda01c5ce42b56fd4092789dc90e87345fae8dfc1d2ac6e8ba068e68138cfe799181900360800190a15060019392505050565b50600160a060020a0316319056",
+    "events": {
+      "0xdda01c5ce42b56fd4092789dc90e87345fae8dfc1d2ac6e8ba068e68138cfe79": {
+        "anonymous": false,
+        "inputs": [
+          {
+            "indexed": false,
+            "name": "owner",
+            "type": "address"
+          },
+          {
+            "indexed": false,
+            "name": "receiverA",
+            "type": "address"
+          },
+          {
+            "indexed": false,
+            "name": "receiverB",
+            "type": "address"
+          },
+          {
+            "indexed": false,
+            "name": "splitAmount",
+            "type": "uint256"
+          }
+        ],
+        "name": "LogSplitSend",
+        "type": "event"
+      }
+    },
+    "updated_at": 1480229313822,
     "links": {},
-    "address": "0x7593b17628db2134dbf9f5bebd5f741fbc0f239b"
+    "address": "0x1877635afbfa8d3e18c6f99ef1ca9df6519350ad"
   }
 };
 
@@ -6253,8 +6330,8 @@ var SolidityEvent = require("web3/lib/web3/event.js");
     ],
     "unlinked_binary": "0x6060604052600080546c0100000000000000000000000033810204600160a060020a0319909116179055610138806100376000396000f3606060405260e060020a60003504630900f010811461003f578063445df0ac146100b85780638da5cb5b146100c6578063fdacd576146100dd575b610002565b34610002576101086004356000805433600160a060020a03908116911614156100b45781905080600160a060020a031663fdacd5766001600050546040518260e060020a02815260040180828152602001915050600060405180830381600087803b156100025760325a03f115610002575050505b5050565b346100025761010a60015481565b346100025761011c600054600160a060020a031681565b346100025761010860043560005433600160a060020a03908116911614156101055760018190555b50565b005b60408051918252519081900360200190f35b60408051600160a060020a039092168252519081900360200190f3",
     "events": {},
-    "updated_at": 1480148714867,
-    "address": "0x3a7c93e3055b72ec11bc26640278ee27dfe6a2ff",
+    "updated_at": 1480229313829,
+    "address": "0x0198df3cdaad8fa143aef5b2e4f1ae1cb2ed8ac2",
     "links": {}
   }
 };
@@ -43476,6 +43553,7 @@ fc.getBalanceOwner.call(account, {from: account}).then(function(value) {
 // Get Balance of Receiver A
 var receiverAAddress = document.getElementById("receiverAAddress").value;
 console.log("receiverAAddress: "+ receiverAAddress);
+
 fc.getBalanceGuest.call(receiverAAddress).then(function(value) {
     var receiverABalance = document.getElementById("receiverABalance");
     receiverABalance.innerHTML = web3.fromWei(value.valueOf(),"ether");
@@ -43489,6 +43567,7 @@ fc.getBalanceGuest.call(receiverAAddress).then(function(value) {
 // Get Balance of Receiver B
 var receiverBAddress = document.getElementById("receiverBAddress").value;
 console.log("receiverBAddress: "+ receiverAAddress);
+
 fc.getBalanceGuest.call(receiverBAddress).then(function(value) {
     var receiverBBalance = document.getElementById("receiverBBalance");
     receiverBBalance.innerHTML = web3.fromWei(value.valueOf(),"ether");
@@ -43502,8 +43581,26 @@ fc.getBalanceGuest.call(receiverBAddress).then(function(value) {
 
 
 function splitSend() {
-  
+  var fc = FirstContract.deployed();
+  var amount = document.getElementById("amount").value;
+  var receiverAAddress = document.getElementById("receiverAAddress").value;
+  var receiverBAddress = document.getElementById("receiverBAddress").value;
+
+  // Why does this not work ?
+  // Why do I need this call using sendTransaction
+  // fc.splitSend(amount, receiverAAddress, receiverBAddress)
+    
+  // Call fc.splitSend with right arguments 
+  fc.splitSend.sendTransaction(receiverAAddress, receiverBAddress, {from: account,  value: amount, gas: 350000}).then(function(tx) {
+        console.log('Transaction --> ' + tx);
+        }).catch(function(e) {
+      console.log(e);
+    });
+
+    
+  refreshBalance();
 };
+
 
 
 window.onload = function() {

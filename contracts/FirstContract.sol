@@ -23,10 +23,10 @@ contract FirstContract {
 		return guest.balance;		
 	}
 
-	event LogSplitSend(address indexed from, address indexed receiverA, address indexed receiverB, uint splitAmount);
+	event LogSplitSend(address owner, address receiverA, address receiverB, uint splitAmount);
 	
-	function splitSend(uint amount, address receiverA, address receiverB) payable returns(bool) {
-		uint splitAmount = amount / 2;
+	function splitSend(address receiverA, address receiverB) payable returns(bool) {
+		uint splitAmount = msg.value / 2;
 
 		if(receiverA == 0 || receiverB == 0) throw;
 
